@@ -17,6 +17,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'habamax/vim-godot'
 
+Plug 'dominikduda/vim_current_word'
+Plug 'pseewald/anyfold'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -27,17 +33,20 @@ Plug 'ryanoasis/vim-webdevicons'
 " colorschemes:
 Plug 'HenryNewcomer/vim-theme-papaya'
 Plug 'joshdick/onedark.vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
 
 call plug#end()
 
 " set colorscheme
 " colorscheme papaya
-colorscheme onedark
+" colorscheme onedark
+colorscheme purify
 
 " base options
 let g:auto_save = 1  " enable auto save on startup
 set mouse=a
- 
+set foldmethod=syntax
+
 " visual config
 
 hi Normal guibg=NONE ctermbg=NONE
@@ -66,10 +75,55 @@ noremap <leader>d "+d
 
 " GODOT plugin config - set executable
 let g:godot_executable = '/home/km/Soft/godot/Godot_v3.2.3-stable_x11.64'
-nnoremap <buffer> <F4> :GodotRunLast<CR>
-nnoremap <buffer> <F5> :GodotRun<CR>
-nnoremap <buffer> <F6> :GodotRunCurrent<CR>
-nnoremap <buffer> <F7> :GodotRunFZF<CR>
+
+" Highlight current word settings:
+let g:vim_current_word#highlight_current_word = 0
+
+" Anyfold settings:
+filetype plugin indent on
+syntax on
+
+autocmd Filetype * AnyFoldActivate               " activate for all filetypes
+set foldlevel=99 " Open all folds
+
+" TREESITTER !
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {  }, -- List of parsers to ignore installing
+  highlight = {
+    enable = false,              -- false will disable the whole extension
+    disable = { },  -- list of language that will be disabled
+  },
+}
+EOF
+lua <<EOF
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.godot = {
+  install_info = {
+    url = "~/dev/src/tree-sitter-gdscript", -- local path or git repo
+    files = {"src/parser.c"}
+  },
+  -- filetype = "zu", -- if filetype does not agrees with parser name
+  used_by = {"tres", "tscn"} -- additional filetypes that use this parser
+}
+EOF
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  refactor = {
+    -- highlight_definitions = { enable = true },
+    -- highlight_current_scope = { enable = true },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "<leader>t",
+      },
+    },
+  },
+}
+EOF
+
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -123,7 +177,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to nticeable
 " delays and poor user experience.

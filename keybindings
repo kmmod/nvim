@@ -1,0 +1,22 @@
+vim keymap:
+
+folding:
+
+zc / zC - close fold one level / all levels
+zo / zO - open fold one level / all levels
+za / zA - toggle fold one level / all levels
+
+zr / zR - open one more level / open all
+zm / zM - close one more level / close all
+
+gd - coc definition
+gy - coc type definition
+gi - coc implementation
+gr - coc reference
+
+K - coc documentation
+
+[g / ]g = coc diagnostics prev / next
+
+leader+f - coc format selected
+
