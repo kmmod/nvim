@@ -105,7 +105,7 @@ parser_config.godot = {
     url = "~/dev/src/tree-sitter-gdscript", -- local path or git repo
     files = {"src/parser.c"}
   },
-  -- filetype = "zu", -- if filetype does not agrees with parser name
+  filetype = "tres", -- if filetype does not agrees with parser name
   used_by = {"tres", "tscn"} -- additional filetypes that use this parser
 }
 EOF
@@ -117,7 +117,7 @@ require'nvim-treesitter.configs'.setup {
     smart_rename = {
       enable = true,
       keymaps = {
-        smart_rename = "<leader>t",
+        smart_rename = "<leader>r",
       },
     },
   },
