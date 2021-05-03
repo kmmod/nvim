@@ -9,6 +9,8 @@ za / zA - toggle fold one level / all levels
 zr / zR - open one more level / open all
 zm / zM - close one more level / close all
 
+COC:
+
 gd - coc definition
 gy - coc type definition
 gi - coc implementation
@@ -22,3 +24,7 @@ leader+f - coc format selected
 
 leader+r - treesitter refactor
 
+MOVEMENT:
+
+ctrl+o  -  previous location
+ctrl+i  -  next location
