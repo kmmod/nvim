@@ -25,6 +25,17 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 Plug 'jeetsukumaran/vim-buffergator'
+Plug '907th/vim-auto-save'
+
+Plug 'Yggdroot/indentLine'
+
+" syntax highlight
+Plug 'cespare/vim-toml'
+
+" lang specific
+" RUST
+Plug 'rust-lang/rust.vim'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -49,12 +60,12 @@ call plug#end()
 colorscheme purify
 
 " base options
+filetype plugin indent on
 let g:auto_save = 1  " enable auto save on startup
 set mouse=a
 set foldmethod=syntax
 set wildmode=longest,list,full
 nnoremap <esc><esc> :noh<return>
-
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
@@ -75,8 +86,6 @@ autocmd InsertEnter * hi LineNr guifg=#00A7D4 | hi VertSplit guifg=#00A7D4
 autocmd InsertChange * hi LineNr guifg=#00A7D4 | hi VertSplit guifg=#00A7D4
 autocmd InsertLeave * hi LineNr guifg=#5F5F5F | hi VertSplit guifg=#232323
 
-let g:indentLine_char = '▏'
-
 :set fillchars+=vert:▏
 set number
 
@@ -91,11 +100,18 @@ noremap <leader>p "*p
 noremap <leader>y "+y
 noremap <leader>d "+d
 
+" RUST
+let g:rustfmt_autosave = 1
+
 " GODOT plugin config - set executable
 let g:godot_executable = '/home/km/Soft/godot/Godot_v3.2.3-stable_x11.64'
 
 " Highlight current word settings:
 let g:vim_current_word#highlight_current_word = 0
+
+" AutoSave options
+let g:auto_save = 1
+let g:auto_save_silent = 1  " do not display the auto-save notification
 
 " Anyfold settings:
 filetype plugin indent on
@@ -103,7 +119,6 @@ syntax on
 
 autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 set foldlevel=99 " Open all folds
-
 
 " TREESITTER !
 lua <<EOF
@@ -131,6 +146,68 @@ EOF
 " }
 " EOF
 
+" Indentline
+" let g:indentLine_setColors = 0
+let g:indentLine_char = '▏'
+
+set number
+
+set termguicolors
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set smarttab
+
+noremap <leader>p "*p
+noremap <leader>y "+y
+noremap <leader>d "+d
+
+" RUST
+let g:rustfmt_autosave = 1
+
+" GODOT plugin config - set executable
+let g:godot_executable = '/home/km/Soft/godot/Godot_v3.2.3-stable_x11.64'
+
+" Highlight current word settings:
+let g:vim_current_word#highlight_current_word = 0
+
+" AutoSave options
+let g:auto_save = 1
+let g:auto_save_silent = 1  " do not display the auto-save notification
+
+" Anyfold settings:
+filetype plugin indent on
+syntax on
+
+autocmd Filetype * AnyFoldActivate               " activate for all filetypes
+set foldlevel=99 " Open all folds
+
+" TREESITTER !
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {  }, -- List of parsers to ignore installing
+  highlight = {
+    enable = false,              -- false will disable the whole extension
+    disable = { },  -- list of language that will be disabled
+  },
+}
+EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   refactor = {
+"     -- highlight_definitions = { enable = true },
+"     -- highlight_current_scope = { enable = true },
+"     smart_rename = {
+"       enable = true,
+"       keymaps = {
+"         smart_rename = "<leader>r",
+"       },
+"     },
+"   },
+" }
+" EOF
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
