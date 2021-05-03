@@ -62,6 +62,10 @@ colorscheme purify
 " base options
 filetype plugin indent on
 let g:auto_save = 1  " enable auto save on startup
+set autoread
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * :checktime
+
 set mouse=a
 set foldmethod=syntax
 set wildmode=longest,list,full
