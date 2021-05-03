@@ -20,3 +20,5 @@ K - coc documentation
 
 leader+f - coc format selected
 
+leader+r - treesitter refactor
+

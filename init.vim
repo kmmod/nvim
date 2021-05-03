@@ -90,23 +90,12 @@ set foldlevel=99 " Open all folds
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {  }, -- List of parsers to ignore installing
   highlight = {
     enable = false,              -- false will disable the whole extension
     disable = { },  -- list of language that will be disabled
   },
-}
-EOF
-lua <<EOF
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.godot = {
-  install_info = {
-    url = "~/dev/src/tree-sitter-gdscript", -- local path or git repo
-    files = {"src/parser.c"}
-  },
-  filetype = "tres", -- if filetype does not agrees with parser name
-  used_by = {"tres", "tscn"} -- additional filetypes that use this parser
 }
 EOF
 lua <<EOF
@@ -139,7 +128,7 @@ let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
 " AIRLINE
 
-" autocmd VimEnter * AirlineToggleWhitespace
+let g:airline#extensions#whitespace#enabled = 0        " disable trailing info"
 let g:airline#extensions#tabline#enabled = 1           " enable airline tabline                                                          
 let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline                                            
 let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
