@@ -47,6 +47,16 @@ let g:auto_save = 1  " enable auto save on startup
 set mouse=a
 set foldmethod=syntax
 nnoremap <esc><esc> :noh<return>
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 " visual config
 

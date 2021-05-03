@@ -28,3 +28,5 @@ MOVEMENT:
 
 ctrl+o  -  previous location
 ctrl+i  -  next location
+
+gt / gT /  2gt   -  next tab / prev tab / numbered
