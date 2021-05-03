@@ -9,6 +9,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -23,6 +24,7 @@ Plug 'pseewald/anyfold'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
+Plug 'jeetsukumaran/vim-buffergator'
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -32,6 +34,8 @@ Plug 'ryanoasis/vim-webdevicons'
 
 " colorschemes:
 Plug 'HenryNewcomer/vim-theme-papaya'
+Plug 'safv12/andromeda.vim'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 
@@ -40,13 +44,17 @@ call plug#end()
 " set colorscheme
 " colorscheme papaya
 " colorscheme onedark
+" colorscheme andromeda
+" colorscheme tokyonight
 colorscheme purify
 
 " base options
 let g:auto_save = 1  " enable auto save on startup
 set mouse=a
 set foldmethod=syntax
+set wildmode=longest,list,full
 nnoremap <esc><esc> :noh<return>
+
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
@@ -59,7 +67,6 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
 " visual config
-
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi VertSplit guifg=#232323
@@ -97,8 +104,8 @@ syntax on
 autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 set foldlevel=99 " Open all folds
 
-" TREESITTER !
 
+" TREESITTER !
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
