@@ -46,6 +46,7 @@ colorscheme purify
 let g:auto_save = 1  " enable auto save on startup
 set mouse=a
 set foldmethod=syntax
+nnoremap <esc><esc> :noh<return>
 
 " visual config
 
@@ -98,20 +99,20 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  refactor = {
-    -- highlight_definitions = { enable = true },
-    -- highlight_current_scope = { enable = true },
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "<leader>r",
-      },
-    },
-  },
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   refactor = {
+"     -- highlight_definitions = { enable = true },
+"     -- highlight_current_scope = { enable = true },
+"     smart_rename = {
+"       enable = true,
+"       keymaps = {
+"         smart_rename = "<leader>r",
+"       },
+"     },
+"   },
+" }
+" EOF
 
 
 " NERDTree config
@@ -238,7 +239,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>r  <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
