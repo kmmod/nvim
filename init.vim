@@ -27,7 +27,7 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug '907th/vim-auto-save'
 
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine' - problems with quotes in json
 
 " syntax highlight
 Plug 'cespare/vim-toml'
@@ -65,7 +65,6 @@ let g:auto_save = 1  " enable auto save on startup
 set autoread
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
-
 set mouse=a
 set foldmethod=syntax
 set wildmode=longest,list,full
@@ -152,6 +151,9 @@ EOF
 
 " Indentline
 " let g:indentLine_setColors = 0
+" let g:indentLine_concealcursor = 'inc'
+" let g:indentLine_conceallevel = 2
+" let g:indentLine_setConceal = 0
 let g:indentLine_char = '▏'
 
 set number
