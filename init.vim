@@ -31,10 +31,15 @@ Plug '907th/vim-auto-save'
 
 " syntax highlight
 Plug 'cespare/vim-toml'
+" Plug 'pangloss/vim-javascript'    " JavaScript support
+" Plug 'leafgarland/typescript-vim' " TypeScript syntax
+" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+" Plug 'jparise/vim-graphql'        " GraphQL syntax
 
 " lang specific
-" RUST
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'         " Rust support
+
+Plug 'jaxbot/semantic-highlight.vim'   "highlight by variable
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -46,9 +51,12 @@ Plug 'ryanoasis/vim-webdevicons'
 " colorschemes:
 Plug 'HenryNewcomer/vim-theme-papaya'
 Plug 'safv12/andromeda.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 
@@ -57,7 +65,16 @@ call plug#end()
 " colorscheme onedark
 " colorscheme andromeda
 " colorscheme tokyonight
-colorscheme purify
+" colorscheme purify
+colorscheme onehalfdark 
+" colorscheme one 
+
+" let ayucolor="mirage"   "light mirage dark 
+" colorscheme ayu 
+
+" set t_Co=256
+" set cursorline
+" let g:airline_theme='ayu'
 
 " base options
 filetype plugin indent on
@@ -84,6 +101,8 @@ noremap <leader>0 :tablast<cr>
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi VertSplit guifg=#232323
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" autocmd vimenter * hi SignColumn guibg=NONE ctermbg=NONE
 
 autocmd InsertEnter * hi LineNr guifg=#00A7D4 | hi VertSplit guifg=#00A7D4  
 autocmd InsertChange * hi LineNr guifg=#00A7D4 | hi VertSplit guifg=#00A7D4
@@ -92,6 +111,8 @@ autocmd InsertLeave * hi LineNr guifg=#5F5F5F | hi VertSplit guifg=#232323
 :set fillchars+=vert:▏
 set number
 
+syntax on
+
 set termguicolors
 set tabstop=2
 set expandtab
@@ -111,6 +132,7 @@ let g:godot_executable = '/home/km/Soft/godot/Godot_v3.2.3-stable_x11.64'
 
 " Highlight current word settings:
 let g:vim_current_word#highlight_current_word = 0
+hi CurrentWordTwins guibg=#232323 gui=underline,bold
 
 " AutoSave options
 let g:auto_save = 1
@@ -118,7 +140,6 @@ let g:auto_save_silent = 1  " do not display the auto-save notification
 
 " Anyfold settings:
 filetype plugin indent on
-syntax on
 
 autocmd Filetype * AnyFoldActivate               " activate for all filetypes
 set foldlevel=99 " Open all folds
@@ -129,91 +150,20 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {  }, -- List of parsers to ignore installing
   highlight = {
-    enable = false,              -- false will disable the whole extension
+    enable = true,              -- false will disable the whole extension
     disable = { },  -- list of language that will be disabled
   },
 }
 EOF
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   refactor = {
-"     -- highlight_definitions = { enable = true },
-"     -- highlight_current_scope = { enable = true },
-"     smart_rename = {
-"       enable = true,
-"       keymaps = {
-"         smart_rename = "<leader>r",
-"       },
-"     },
-"   },
-" }
-" EOF
+
 
 " Indentline
 " let g:indentLine_setColors = 0
 " let g:indentLine_concealcursor = 'inc'
 " let g:indentLine_conceallevel = 2
 " let g:indentLine_setConceal = 0
-let g:indentLine_char = '▏'
+" let g:indentLine_char = '▏'
 
-set number
-
-set termguicolors
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set smarttab
-
-noremap <leader>p "*p
-noremap <leader>y "+y
-noremap <leader>d "+d
-
-" RUST
-let g:rustfmt_autosave = 1
-
-" GODOT plugin config - set executable
-let g:godot_executable = '/home/km/Soft/godot/Godot_v3.2.3-stable_x11.64'
-
-" Highlight current word settings:
-let g:vim_current_word#highlight_current_word = 0
-
-" AutoSave options
-let g:auto_save = 1
-let g:auto_save_silent = 1  " do not display the auto-save notification
-
-" Anyfold settings:
-filetype plugin indent on
-syntax on
-
-autocmd Filetype * AnyFoldActivate               " activate for all filetypes
-set foldlevel=99 " Open all folds
-
-" TREESITTER !
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = {  }, -- List of parsers to ignore installing
-  highlight = {
-    enable = false,              -- false will disable the whole extension
-    disable = { },  -- list of language that will be disabled
-  },
-}
-EOF
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   refactor = {
-"     -- highlight_definitions = { enable = true },
-"     -- highlight_current_scope = { enable = true },
-"     smart_rename = {
-"       enable = true,
-"       keymaps = {
-"         smart_rename = "<leader>r",
-"       },
-"     },
-"   },
-" }
-" EOF
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
