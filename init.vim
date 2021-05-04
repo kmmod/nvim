@@ -163,7 +163,9 @@ EOF
 " let g:indentLine_conceallevel = 2
 " let g:indentLine_setConceal = 0
 " let g:indentLine_char = '▏'
-
+" let g:LanguageClient_serverCommands = {
+"     \ 'vue': ['vls']
+"     \ }
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
