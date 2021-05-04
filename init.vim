@@ -207,6 +207,9 @@ let g:airline#extensions#default#section_truncate_width = {
 
 
 " Coc Vim default settings:
+" custom colors:
+hi CocFloating guibg=#5F5F5F
+
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
