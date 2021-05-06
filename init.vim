@@ -22,7 +22,7 @@ Plug 'dominikduda/vim_current_word'
 Plug 'pseewald/anyfold'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
+" Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 Plug 'jeetsukumaran/vim-buffergator'
 Plug '907th/vim-auto-save'
@@ -208,7 +208,7 @@ let g:airline#extensions#default#section_truncate_width = {
 
 " Coc Vim default settings:
 " custom colors:
-hi CocFloating guibg=#5F5F5F
+hi CocFloating guibg=#232323
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
