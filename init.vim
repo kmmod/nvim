@@ -22,7 +22,7 @@ Plug 'dominikduda/vim_current_word'
 Plug 'pseewald/anyfold'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
+" Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 Plug 'jeetsukumaran/vim-buffergator'
 Plug '907th/vim-auto-save'
