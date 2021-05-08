@@ -297,8 +297,12 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>r  <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f :<C-u>CocCommand prettier.formatFile<cr>  
+nmap <leader>f :<C-u>CocCommand prettier.formatFile<cr>
+xmap <leader>e :<C-u>CocCommand eslint.executeAutofix<cr>
+nmap <leader>e :<C-u>CocCommand eslint.executeAutofix<cr>
 
 augroup mygroup
   autocmd!
@@ -362,7 +366,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
