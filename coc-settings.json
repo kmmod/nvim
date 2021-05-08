@@ -1,0 +1,6 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "python.jediEnabled": true,
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black"
+}
