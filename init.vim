@@ -66,7 +66,7 @@ call plug#end()
 " colorscheme andromeda
 " colorscheme tokyonight
 " colorscheme purify
-colorscheme onehalfdark 
+colorscheme onehalfdark
 " colorscheme one 
 
 " let ayucolor="mirage"   "light mirage dark 
@@ -101,6 +101,7 @@ noremap <leader>0 :tablast<cr>
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi VertSplit guifg=#232323
+set background=dark
 " autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 " autocmd vimenter * hi SignColumn guibg=NONE ctermbg=NONE
 
@@ -122,7 +123,7 @@ set smarttab
 
 noremap <leader>p "*p
 noremap <leader>y "+y
-noremap <leader>d "+d
+" noremap <leader>d "+d
 
 " RUST
 let g:rustfmt_autosave = 1
@@ -364,7 +365,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 " nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
